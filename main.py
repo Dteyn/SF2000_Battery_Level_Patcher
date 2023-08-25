@@ -5,11 +5,11 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 # Change battery values here
 BATTERY_VALUES = [
-    (0x3564ec, 0xBF),  # Battery level 3, stock value 0xBF
-    (0x3564f4, 0xB3),  # Battery level 2, stock value 0xB7
-    (0x35658c, 0xA5),  # Battery level 1, stock value 0xAF
-    (0x356594, 0x96),  # Battery level 0, stock value 0xA9
-    (0x3565b0, 0x6E)   # Battery level -1, stock value 0xA1
+    (0x3564ec, 0xBF),  # Battery level 3, approx 4.2V
+    (0x3564f4, 0xBA),  # Battery level 2, approx 4.075V
+    (0x35658c, 0xB4),  # Battery level 1, approx 3.95V
+    (0x356594, 0xAF),  # Battery level 0, approx 3.83V
+    (0x3565b0, 0xAD)   # Battery level -1, approx 3.65V
 ]
 
 # Stock values for sanity check
@@ -72,8 +72,9 @@ def patch_firmware(filename):
         logging.info("File patched with new battery values.")
 
         # Calculate new CRC32
+        logging.info("Calculating new CRC32...")
         crc = calculate_crc32(bisrv_data)
-        logging.info("New CRC32 value calculated: %X", crc)
+        logging.info("New CRC32 value: %X", crc)
 
         # Update CRC32 in the bisrv_data
         bisrv_data[0x18c] = crc & 0xFF
@@ -82,9 +83,9 @@ def patch_firmware(filename):
         bisrv_data[0x18f] = (crc >> 24) & 0xFF
 
         # Write the patched data back to the file
-        with open(filename, 'wb') as f:
+        with open(filename + "-patched", 'wb') as f:
             f.write(bisrv_data)
-        logging.info("Patched data written back to '%s'.", filename)
+        logging.info("Patched data written back to '%s'.", filename + "-patched")
 
     except FileNotFoundError:
         logging.error("File '%s' not found.", filename)
