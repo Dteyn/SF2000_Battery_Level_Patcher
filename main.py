@@ -5,11 +5,11 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 # Change battery values here
 BATTERY_VALUES = [
-    (0x3564ec, 0xBF),  # Battery level 3, approx 4.2V
-    (0x3564f4, 0xBA),  # Battery level 2, approx 4.075V
-    (0x35658c, 0xB4),  # Battery level 1, approx 3.95V
-    (0x356594, 0xAF),  # Battery level 0, approx 3.83V
-    (0x3565b0, 0xAD)   # Battery level -1, approx 3.65V
+    (0x3564ec, 0xBF),  # Battery level 3 - full
+    (0x3564f4, 0xBA),  # Battery level 2
+    (0x35658c, 0xB4),  # Battery level 1
+    (0x356594, 0xAF),  # Battery level 0
+    (0x3565b0, 0xAD)   # Battery level -1 - near empty
 ]
 
 # Stock values for sanity check
@@ -48,7 +48,8 @@ def sanity_check(bisrv_data):
     """
     for addr, expected_value in STOCK_VALUES.items():
         if bisrv_data[addr] != expected_value:
-            logging.error("The firmware does not match the expected '08.03' version at offset %X. Please check the offsets.", addr)
+            logging.error("The firmware does not match the expected '08.03' version at offset %X. "
+                          "Please check the offsets.", addr)
             return False
     return True
 
