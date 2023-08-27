@@ -1,16 +1,22 @@
 import logging
 
+# Filename of original firmware file to open
+firmware_file = "bisrv-08_03.asd"
+
+# Filename of patched firmware file to save
+patched_file = "bisrv.asd"
+
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 # Change battery values here
-BATTERY_VALUES = [
-    (0x3564ec, 0xBF),  # Battery level 3 - full
-    (0x3564f4, 0xBA),  # Battery level 2
-    (0x35658c, 0xB4),  # Battery level 1
-    (0x356594, 0xAF),  # Battery level 0
-    (0x3565b0, 0xAD)   # Battery level -1 - near empty
-]
+BATTERY_VALUES = {
+    0x3564ec: 0xC5,  # Battery level 3 - full
+    0x3564f4: 0xC0,  # Battery level 2
+    0x35658c: 0xAC,  # Battery level 1
+    0x356594: 0xA4,  # Battery level 0
+    0x3565b0: 0x95   # Battery level -1 - near empty
+}
 
 # Stock values for sanity check
 STOCK_VALUES = {
@@ -68,7 +74,7 @@ def patch_firmware(filename):
             return
 
         # Patch the battery values
-        for addr, value in BATTERY_VALUES:
+        for addr, value in BATTERY_VALUES.items():
             bisrv_data[addr] = value
         logging.info("File patched with new battery values.")
 
@@ -84,9 +90,9 @@ def patch_firmware(filename):
         bisrv_data[0x18f] = (crc >> 24) & 0xFF
 
         # Write the patched data back to the file
-        with open(filename + "-patched", 'wb') as f:
+        with open(patched_file, 'wb') as f:
             f.write(bisrv_data)
-        logging.info("Patched data written back to '%s'.", filename + "-patched")
+        logging.info("Patched data written back to '%s'.", patched_file)
 
     except FileNotFoundError:
         logging.error("File '%s' not found.", filename)
@@ -95,4 +101,4 @@ def patch_firmware(filename):
 
 
 if __name__ == "__main__":
-    patch_firmware('bisrv.asd')
+    patch_firmware(firmware_file)
