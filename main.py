@@ -9,8 +9,8 @@ patched_file = "bisrv.asd"
 # Define voltage values for each battery level (user can modify these)
 VOLTAGE_LEVELS = {
     "5 bars": 4.0,  # Full charge
-    "4 bars": 3.92,
-    "3 bars": 3.82,
+    "4 bars": 3.88,
+    "3 bars": 3.80,
     "2 bars": 3.72,
     "1 bar (red)": 3.66  # Near empty
 }
