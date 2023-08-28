@@ -6,17 +6,35 @@ firmware_file = "bisrv-08_03.asd"
 # Filename of patched firmware file to save
 patched_file = "bisrv.asd"
 
+# Define voltage values for each battery level (user can modify these)
+VOLTAGE_LEVELS = {
+    "5 bars": 4.0,  # Full charge
+    "4 bars": 3.92,
+    "3 bars": 3.82,
+    "2 bars": 3.72,
+    "1 bar (red)": 3.66  # Near empty
+}
+
+# Offset addresses for each battery level - firmware 08.03
+ADDRESSES = [
+    0x3564ec,  # 5 bars (full charge)
+    0x3564f4,  # 4 bars
+    0x35658c,  # 3 bars
+    0x356594,  # 2 bars (yellow)
+    0x3565b0  # 1 bar (red)
+]
+
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 
-# Change battery values here
-BATTERY_VALUES = {
-    0x3564ec: 0xC5,  # Battery level 3 - full
-    0x3564f4: 0xC0,  # Battery level 2
-    0x35658c: 0xAC,  # Battery level 1
-    0x356594: 0xA4,  # Battery level 0
-    0x3565b0: 0x95   # Battery level -1 - near empty
-}
+
+def voltage_to_value(voltage):
+    """Convert voltage to the appropriate firmware value using the 50x multiplier."""
+    return int(voltage * 50)
+
+
+# Convert voltage levels to firmware values
+BATTERY_VALUES = {addr: voltage_to_value(VOLTAGE_LEVELS[bar]) for addr, bar in zip(ADDRESSES, VOLTAGE_LEVELS)}
 
 # Stock values for sanity check
 STOCK_VALUES = {
