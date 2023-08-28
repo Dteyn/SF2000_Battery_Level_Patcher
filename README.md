@@ -73,8 +73,8 @@ By doing so, we ensure that the battery meter provides a more accurate represent
 
 ```
 5 bars - 0xC8 - 200 - 4.0v
-4 bars - 0xC4 - 196 - 3.92v
-3 bars - 0xBF - 191 - 3.82v
+4 bars - 0xC2 - 194 - 3.88v
+3 bars - 0xBE - 190 - 3.80v
 2 bars - 0xBA - 186 - 3.72v
 1 bar - 0xB7 - 183 - 3.66v
 ```
