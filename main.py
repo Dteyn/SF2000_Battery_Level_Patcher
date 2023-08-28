@@ -48,7 +48,8 @@ STOCK_VALUES = {
 
 def calculate_crc32(data):
     """
-    Calculate the CRC32 value for the given data.
+    Calculate the CRC32 value for the given data. 
+    Credit to @bnister for the C version of this code (translated to Python by GPT-4)
     """
     tab_crc32 = [(i << 24) & 0xFFFFFFFF for i in range(256)]
     for i in range(256):
