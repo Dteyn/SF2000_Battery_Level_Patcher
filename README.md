@@ -42,7 +42,7 @@ There are five battery levels defined which correspond to how many bars are show
 0xA1 - 1 bar - red, nearly empty
 ```
 
-Any reading below the lowest value will display a 'low battery - charge soon' warning message which will interrupt gameplay and give the user a change to save the game before the battery dies completely.
+Any reading below the lowest value will display a 'low battery - charge soon' warning message which will interrupt gameplay and give the user a chance to save the game before the battery dies completely.
 
 The values above correspond to actual voltage readings by multiplying the actual voltage by a factor of 50. For instance, a decimal value of 191 (0xBF) in the firmware corresponds to a voltage of 3.82V (191/50 = 3.82).
 
@@ -96,7 +96,7 @@ August 3rd: 0x3564EC    0x3564F4    0x35658C    0x356594    0x3565B0
 
 # Credits
 
-Thank you to @bnister on the Retro Handhelds Discord server for the bulk of the research on this. Without their help, this fix would not have been possible.
+Thank you to @bnister on the Retro Handhelds Discord server for the bulk of the research on this. Without their help, this fix would not have been possible. Also, the CRC32 calculation code  was provided by @bnister as well.
 
 Thank you to @VonMillhausen for their excellent SF2000 information repository which can be found here: https://github.com/vonmillhausen/sf2000
 
