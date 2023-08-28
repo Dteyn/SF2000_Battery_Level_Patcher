@@ -98,6 +98,6 @@ August 3rd: 0x3564EC    0x3564F4    0x35658C    0x356594    0x3565B0
 
 Thank you to @bnister on the Retro Handhelds Discord server for the bulk of the research on this. Without their help, this fix would not have been possible.
 
-Thank you to @VonMillausen for their excellent SF2000 information repository which can be found here: https://github.com/vonmillhausen/sf2000
+Thank you to @VonMillhausen for their excellent SF2000 information repository which can be found here: https://github.com/vonmillhausen/sf2000
 
 
