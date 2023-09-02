@@ -1,6 +1,12 @@
 # SF2000 Battery Level Patcher
 This tool is designed to patch the Data Frog SF2000 `bisrv.asd` firmware file to provide a more accurate battery level representation when operating on the stock 18650 Li-Ion battery.
 
+## Web-Based Tool
+A web-based tool to fix the Battery Meter is now available here:
+https://dteyn.github.io/sf2000/tools/batteryMeterFix.htm
+
+The web-based tool is based on @VonMillhausen's [Boot Logo Changer tool](https://vonmillhausen.github.io/sf2000/tools/bootLogoChanger.htm). Thank you Von Millhausen!
+
 ## Script Functionality
 
 This Python script allows users to:
