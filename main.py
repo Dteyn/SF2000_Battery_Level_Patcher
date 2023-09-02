@@ -37,13 +37,13 @@ def voltage_to_value(voltage):
 BATTERY_VALUES = {addr: voltage_to_value(VOLTAGE_LEVELS[bar]) for addr, bar in zip(ADDRESSES, VOLTAGE_LEVELS)}
 
 # Stock values for sanity check
-STOCK_VALUES = {
-    0x3564ec: 0xBF,
-    0x3564f4: 0xB7,
-    0x35658c: 0xAF,
-    0x356594: 0xA9,
-    0x3565b0: 0xA1
-}
+STOCK_VALUES = [
+    0xBF,
+    0xB7,
+    0xAF,
+    0xA9,
+    0xA1
+]
 
 
 def calculate_crc32(data):
@@ -71,7 +71,7 @@ def sanity_check(bisrv_data):
     """
     Check if the firmware matches the expected "08.03" version.
     """
-    for addr, expected_value in STOCK_VALUES.items():
+    for addr, expected_value in zip(ADDRESSES, STOCK_VALUES):
         if bisrv_data[addr] != expected_value:
             logging.error("The firmware does not match the expected '08.03' version at offset %X. "
                           "Please check the offsets.", addr)
