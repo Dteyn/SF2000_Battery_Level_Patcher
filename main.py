@@ -1,7 +1,7 @@
 import logging
 
 # Filename of original firmware file to open
-firmware_file = "bisrv-08_03.asd"
+firmware_file = "bisrv-10_13.asd"
 
 # Filename of patched firmware file to save
 patched_file = "bisrv.asd"
@@ -15,13 +15,13 @@ VOLTAGE_LEVELS = {
     "1 bar (red)": 3.66  # Near empty
 }
 
-# Offset addresses for each battery level - firmware 08.03
+# Offset addresses for each battery level - firmware 10.13
 ADDRESSES = [
-    0x3564ec,  # 5 bars (full charge)
-    0x3564f4,  # 4 bars
-    0x35658c,  # 3 bars
-    0x356594,  # 2 bars (yellow)
-    0x3565b0  # 1 bar (red)
+    0x356638,  # 5 bars (full charge)
+    0x356640,  # 4 bars
+    0x3566d8,  # 3 bars
+    0x3566e0,  # 2 bars (yellow)
+    0x3566fc  # 1 bar (red)
 ]
 
 # Set up logging
