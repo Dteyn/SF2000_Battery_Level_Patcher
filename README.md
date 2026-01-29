@@ -106,4 +106,4 @@ Thank you to @bnister on the Retro Handhelds Discord server for the bulk of the 
 
 Thank you to @VonMillhausen for their excellent SF2000 information repository which can be found here: https://github.com/vonmillhausen/sf2000
 
-
+You are visitor: ![Page views](https://dteyn-rad-page.netlify.app/.netlify/functions/pageviews?repo=SF2000_Battery_Level_Patcher)
